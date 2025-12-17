@@ -1,0 +1,6 @@
+@Yad2RestAPI_HostAddress = http://localhost:5083
+
+GET {{Yad2RestAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
