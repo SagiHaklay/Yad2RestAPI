@@ -10,5 +10,6 @@ namespace Yad2RestAPI.Data
         {
             
         }
+        public DbSet<ProfileModel> Profiles { get; set; }
     }
 }
