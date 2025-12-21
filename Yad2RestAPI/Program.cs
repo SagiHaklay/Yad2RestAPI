@@ -6,6 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Yad2RestAPI.Data;
 using Yad2RestAPI.Models;
+using Yad2RestAPI.Repositories;
 
 namespace Yad2RestAPI
 {
@@ -38,8 +39,17 @@ namespace Yad2RestAPI
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Secret"] ?? ""))
                 };
             });
+            builder.Services.Configure<IdentityOptions>(options => 
+            {
+                options.Password.RequireDigit = true;
+                options.Password.RequiredLength = 8;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequiredUniqueChars = 0;
+            });
             // Add services to the container.
-
+            builder.Services.AddScoped<IProfileRepository, ProfileRepository>();
             builder.Services.AddControllers().AddNewtonsoftJson(opt => { 
                 opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             });

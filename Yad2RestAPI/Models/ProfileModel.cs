@@ -12,5 +12,6 @@
         public string? Street { get; set; }
         public int? HouseNumber { get; set; }
         public DateTime? DateOfBirth { get; set; }
+        public string? ProfileImageUrl { get; set; }
     }
 }
