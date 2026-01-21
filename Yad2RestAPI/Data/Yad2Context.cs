@@ -27,9 +27,7 @@ namespace Yad2RestAPI.Data
             builder.Entity<RealEstateAdModel>()
                 .Property(e => e.VideoUrls)
                 .HasConversion(strListConverter, strListComparer);
-            builder.Entity<RealEstateAdModel>()
-                .Property(e => e.PropertyFeatures)
-                .HasConversion(GetListValueConverter<HashSet<RealEstatePropertyFeature>>(), GetListValueComparer<RealEstatePropertyFeature>());
+            
         }
         protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
         {

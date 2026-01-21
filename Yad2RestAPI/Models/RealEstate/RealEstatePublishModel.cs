@@ -39,7 +39,7 @@ namespace Yad2RestAPI.Models.RealEstate
         [Required]
         [Range(0, 3)]
         public int BalconyCount { get; set; }
-        public List<RealEstatePropertyFeature>? PropertyFeatures { get; set; }
+        public List<RealEstatePropertyFeature> PropertyFeatures { get; } = new List<RealEstatePropertyFeature>();
         public string? PropertyDescription { get; set; }
         [Range(1, 12)]
         public int? PaymentCount { get; set; }
@@ -62,5 +62,6 @@ namespace Yad2RestAPI.Models.RealEstate
         public string ContactName { get; set; } = string.Empty;
         [Required]
         public string ContactPhone { get; set; } = string.Empty;
+        public bool IsBackProperty { get; set; }
     }
 }

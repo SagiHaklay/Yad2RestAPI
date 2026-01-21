@@ -1,10 +1,12 @@
 ﻿namespace Yad2RestAPI.Models.RealEstate
 {
+    [Flags]
     public enum RealEstateView
     {
         None = 0,
-        Sea,
-        Park,
-        City
+        Sea = 1,
+        Park = 2,
+        City = 4,
+        Back = 8
     }
 }

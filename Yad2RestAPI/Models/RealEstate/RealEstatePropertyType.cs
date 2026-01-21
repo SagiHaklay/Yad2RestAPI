@@ -1,28 +1,30 @@
 ﻿namespace Yad2RestAPI.Models.RealEstate
 {
+    [Flags]
     public enum RealEstatePropertyType
     {
-        Apartment,
-        GardenApartment,
-        Private,
-        Penthouse,
-        Lot,
-        Duplex,
-        Tourism,
-        TwoFamilies,
-        Basement,
-        Triplex,
-        HousingUnit,
-        Farm,
-        AuxFarm,
-        Protected,
-        Exchange,
-        Sublet,
-        Building,
-        Studio,
-        Storage,
-        Group,
-        Parking,
-        General
+        None = 0,
+        Apartment = 0b00_0000_0000_0000_0000_0001,
+        GardenApartment = 0b00_0000_0000_0000_0000_0010,
+        Private = 0b00_0000_0000_0000_0000_0100,
+        Penthouse = 0b00_0000_0000_0000_0000_1000,
+        Lot = 0b00_0000_0000_0000_0001_0000,
+        Duplex = 0b00_0000_0000_0000_0010_0000,
+        Tourism = 0b00_0000_0000_0000_0100_0000,
+        TwoFamilies = 0b00_0000_0000_0000_1000_0000,
+        Basement = 0b00_0000_0000_0001_0000_0000,
+        Triplex = 0b00_0000_0000_0010_0000_0000,
+        HousingUnit = 0b00_0000_0000_0100_0000_0000,
+        Farm = 0b00_0000_0000_1000_0000_0000,
+        AuxFarm = 0b00_0000_0001_0000_0000_0000,
+        Protected = 0b00_0000_0010_0000_0000_0000,
+        Exchange = 0b00_0000_0100_0000_0000_0000,
+        Sublet = 0b00_0000_1000_0000_0000_0000,
+        Building = 0b00_0001_0000_0000_0000_0000,
+        Studio = 0b00_0010_0000_0000_0000_0000,
+        Storage = 0b00_0100_0000_0000_0000_0000,
+        Group = 0b00_1000_0000_0000_0000_0000,
+        Parking = 0b01_0000_0000_0000_0000_0000,
+        General = 0b10_0000_0000_0000_0000_0000
     }
 }

@@ -17,7 +17,7 @@
         public int ShowerCount { get; set; } = 1;
         public int ParkingCount { get; set; }
         public int BalconyCount { get; set; }
-        public HashSet<RealEstatePropertyFeature> PropertyFeatures { get; set; } = new HashSet<RealEstatePropertyFeature>();
+        public RealEstatePropertyFeature PropertyFeatures { get; set; }
         public string? PropertyDescription { get; set; }
         public int? PaymentCount { get; set; }
         public float? HouseCommiteePayment { get; set; }
@@ -32,5 +32,7 @@
         public IList<string> VideoUrls { get; set; } = new List<string>();
         public string ContactName { get; set; } = string.Empty;
         public string ContactPhone { get; set; } = string.Empty;
+        public ProfileModel Publisher { get; set; }
+        public int PublisherId { get; set; }
     }
 }
