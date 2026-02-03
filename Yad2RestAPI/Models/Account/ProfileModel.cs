@@ -1,6 +1,6 @@
 ﻿using Yad2RestAPI.Models.RealEstate;
 
-namespace Yad2RestAPI.Models
+namespace Yad2RestAPI.Models.Account
 {
     public class ProfileModel
     {
@@ -16,5 +16,6 @@ namespace Yad2RestAPI.Models
         public DateTime? DateOfBirth { get; set; }
         public string? ProfileImageUrl { get; set; }
         public ICollection<RealEstateAdModel> RealEstateAds { get; } = new List<RealEstateAdModel>();
+        public ICollection<RealEstateAdModel> FavoriteAds { get; } = new List<RealEstateAdModel>();
     }
 }

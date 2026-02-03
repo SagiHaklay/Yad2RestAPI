@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Yad2RestAPI.Models;
+using Yad2RestAPI.Models.Account;
 using Yad2RestAPI.Repositories;
 
 namespace Yad2RestAPI.Controllers

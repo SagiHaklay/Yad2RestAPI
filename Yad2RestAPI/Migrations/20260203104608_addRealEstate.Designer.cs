@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Yad2RestAPI.Data;
 
@@ -11,9 +12,11 @@ using Yad2RestAPI.Data;
 namespace Yad2RestAPI.Migrations
 {
     [DbContext(typeof(Yad2Context))]
-    partial class Yad2ContextModelSnapshot : ModelSnapshot
+    [Migration("20260203104608_addRealEstate")]
+    partial class addRealEstate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

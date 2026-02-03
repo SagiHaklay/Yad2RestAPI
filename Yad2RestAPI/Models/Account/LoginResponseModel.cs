@@ -1,4 +1,4 @@
-﻿namespace Yad2RestAPI.Models
+﻿namespace Yad2RestAPI.Models.Account
 {
     public class LoginResponseModel
     {

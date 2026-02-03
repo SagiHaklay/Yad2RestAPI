@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Yad2RestAPI.Models
+namespace Yad2RestAPI.Models.Account
 {
     public class LoginRequestModel
     {

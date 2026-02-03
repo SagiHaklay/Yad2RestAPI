@@ -1,4 +1,6 @@
-﻿namespace Yad2RestAPI.Models.RealEstate
+﻿using Yad2RestAPI.Models.Account;
+
+namespace Yad2RestAPI.Models.RealEstate
 {
     public class RealEstateAdModel
     {
@@ -32,7 +34,8 @@
         public IList<string> VideoUrls { get; set; } = new List<string>();
         public string ContactName { get; set; } = string.Empty;
         public string ContactPhone { get; set; } = string.Empty;
-        public ProfileModel Publisher { get; set; }
-        public int PublisherId { get; set; }
+        public ProfileModel? Publisher { get; set; }
+        public int? PublisherId { get; set; }
+        //public ICollection<FavoriteModel> Favorites { get; } = new List<FavoriteModel>();
     }
 }

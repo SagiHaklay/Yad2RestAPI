@@ -1,4 +1,4 @@
-﻿using Yad2RestAPI.Models;
+﻿using Yad2RestAPI.Models.Account;
 
 namespace Yad2RestAPI.Repositories
 {
