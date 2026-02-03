@@ -50,6 +50,7 @@ namespace Yad2RestAPI
             });
             // Add services to the container.
             builder.Services.AddScoped<IProfileRepository, ProfileRepository>();
+            builder.Services.AddScoped<IRealEstateRepository, RealEstateAdRepository>();
             builder.Services.AddControllers().AddNewtonsoftJson(opt => { 
                 opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             });

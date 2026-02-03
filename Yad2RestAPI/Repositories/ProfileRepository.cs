@@ -22,11 +22,12 @@ namespace Yad2RestAPI.Repositories
             _context = context;
             _config = configuration;
         }
-        private string NewToken(string username)
+        private string NewToken(AppUser user)
         {
             var authClaims = new List<Claim>()
             {
-                new Claim(ClaimTypes.Name, username),
+                new Claim(ClaimTypes.Name, user.UserName ?? ""),
+                new Claim(ClaimTypes.NameIdentifier, user.ProfileId.ToString()),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
             var authSigninKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JWT:Secret"] ?? ""));
@@ -57,7 +58,7 @@ namespace Yad2RestAPI.Repositories
             {
                 return null;
             }
-            var token = NewToken(loginRequest.Email);
+            var token = NewToken(user);
             return new LoginResponseModel()
             {
                 Token = token,

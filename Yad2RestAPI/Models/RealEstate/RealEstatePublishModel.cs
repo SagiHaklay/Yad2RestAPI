@@ -61,7 +61,10 @@ namespace Yad2RestAPI.Models.RealEstate
         [Required]
         public string ContactName { get; set; } = string.Empty;
         [Required]
+        [Phone]
         public string ContactPhone { get; set; } = string.Empty;
         public bool IsBackProperty { get; set; }
+        public IList<string> ImageUrls { get; } = new List<string>();
+        public IList<string> VideoUrls { get; } = new List<string>();
     }
 }

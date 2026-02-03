@@ -21,4 +21,23 @@
         Storage = 0b0100_0000_0000_0000, // 0x4000 16384
         Exclusive = 0b1000_0000_0000_0000 // 0x8000 32768
     }
+
+    public static class Extensions
+    {
+        public static List<RealEstatePropertyFeature> ToList(this RealEstatePropertyFeature features)
+        {
+            var list = new List<RealEstatePropertyFeature>();
+            var values = Enum.GetValues(typeof(RealEstatePropertyFeature));
+            foreach (RealEstatePropertyFeature value in values)
+            {
+                if (features.HasFlag(value))
+                {
+                    list.Add(value);
+                    features &= ~value;
+                    if (features == RealEstatePropertyFeature.None) return list;
+                }
+            }
+            return list;
+        }
+    }
 }
