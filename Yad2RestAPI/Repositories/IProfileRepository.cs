@@ -8,5 +8,8 @@ namespace Yad2RestAPI.Repositories
         Task<LoginResponseModel?> LoginAsync(LoginRequestModel loginRequest);
         Task<ProfileModel?> GetProfileByIdAsync(int id);
         Task<ProfileModel?> UpdateProfileAsync(int id, ProfileUpdateModel profileUpdate);
+        Task<bool> AddToFavoritesAsync(int profileId, int adId);
+        Task<bool> RemoveFromFavoritesAsync(int profileId, int adId);
+        Task<IList<ProfileModel>> GetAllProfilesAsync();
     }
 }

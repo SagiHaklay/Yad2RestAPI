@@ -22,6 +22,6 @@ namespace Yad2RestAPI.Models.Account
         public string Street { get; set; }
         [Required(ErrorMessage = "House number is required.")]
         public int HouseNumber { get; set; }
-        public DateTime? DateOfBirth { get; set; }
+        public string? DateOfBirth { get; set; }
     }
 }

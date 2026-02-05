@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -42,7 +43,10 @@ namespace Yad2RestAPI.Repositories
         }
         public async Task<ProfileModel?> GetProfileByIdAsync(int id)
         {
-            var profile = await _context.Profiles.FindAsync(id);
+            var profile = await _context.Profiles
+                .Include(p => p.RealEstateAds)
+                .Include(p => p.FavoriteAds)
+                .FirstOrDefaultAsync(p => p.Id == id);
             return profile;
         }
 
@@ -94,9 +98,51 @@ namespace Yad2RestAPI.Repositories
             return profile;
         }
 
-        public Task<ProfileModel?> UpdateProfileAsync(int id, ProfileUpdateModel profileUpdate)
+        public async Task<ProfileModel?> UpdateProfileAsync(int id, ProfileUpdateModel profileUpdate)
         {
-            throw new NotImplementedException();
+            var profile = await _context.Profiles.FindAsync(id);
+            if (profile == null) return null;
+            profile.Email = profileUpdate.Email;
+            profile.FirstName = profileUpdate.FirstName;
+            profile.LastName = profileUpdate.LastName;
+            profile.Phone = profileUpdate.Phone;
+            profile.City = profileUpdate.City;
+            profile.Street = profileUpdate.Street;
+            profile.HouseNumber = profileUpdate.HouseNumber;
+            if (profileUpdate.DateOfBirth != null)
+            {
+                profile.DateOfBirth = DateTime.Parse(profileUpdate.DateOfBirth);
+            }
+            await _context.SaveChangesAsync();
+            return profile;
+        }
+
+        public async Task<bool> AddToFavoritesAsync(int profileId, int adId)
+        {
+            var profile = await _context.Profiles.FindAsync(profileId);
+            if (profile == null) return false;
+            if (profile.FavoriteAds.Any(ad => ad.Id == adId)) return false;
+            var ad = await _context.RealEstateAds.FindAsync(adId);
+            if (ad == null) return false;
+            profile.FavoriteAds.Add(ad);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<bool> RemoveFromFavoritesAsync(int profileId, int adId)
+        {
+            var profile = await _context.Profiles.FindAsync(profileId);
+            if (profile == null) return false;
+            var ad = profile.FavoriteAds.FirstOrDefault(ad => ad.Id == adId);
+            if (ad == null) return false;
+            profile.FavoriteAds.Remove(ad);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<IList<ProfileModel>> GetAllProfilesAsync()
+        {
+            return await _context.Profiles.ToListAsync();
         }
     }
 }
