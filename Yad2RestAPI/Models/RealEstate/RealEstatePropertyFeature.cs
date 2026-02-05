@@ -30,6 +30,7 @@
             var values = Enum.GetValues(typeof(RealEstatePropertyFeature));
             foreach (RealEstatePropertyFeature value in values)
             {
+                if (value == RealEstatePropertyFeature.None) continue;
                 if (features.HasFlag(value))
                 {
                     list.Add(value);

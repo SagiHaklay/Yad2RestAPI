@@ -11,12 +11,13 @@ namespace Yad2RestAPI.Models.RealEstate
         [Required]
         public string Street { get; set; } = string.Empty;
         [Required]
-        [Range(0, int.MaxValue)]
+        [Range(1, int.MaxValue)]
         public int HouseNumber { get; set; }
         [Required]
+        [Range(-10, 100)]
         public int Floor { get; set; }
         [Required]
-        [Range(0, int.MaxValue)]
+        [Range(1, 100)]
         public int TotalFloors { get; set; }
         [Required]
         public bool OnColumns { get; set; }
@@ -39,7 +40,7 @@ namespace Yad2RestAPI.Models.RealEstate
         [Required]
         [Range(0, 3)]
         public int BalconyCount { get; set; }
-        public List<RealEstatePropertyFeature> PropertyFeatures { get; } = new List<RealEstatePropertyFeature>();
+        public List<RealEstatePropertyFeature> PropertyFeatures { get; set; } = new List<RealEstatePropertyFeature>();
         public string? PropertyDescription { get; set; }
         [Range(1, 12)]
         public int? PaymentCount { get; set; }
@@ -64,7 +65,8 @@ namespace Yad2RestAPI.Models.RealEstate
         [Phone]
         public string ContactPhone { get; set; } = string.Empty;
         public bool IsBackProperty { get; set; }
-        public IList<string> ImageUrls { get; } = new List<string>();
-        public IList<string> VideoUrls { get; } = new List<string>();
+        public List<string> ImageUrls { get; set; } = new List<string>();
+        public List<string> VideoUrls { get; set; } = new List<string>();
+        public int? PublisherId { get; set; }
     }
 }

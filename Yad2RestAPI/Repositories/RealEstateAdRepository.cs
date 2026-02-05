@@ -98,7 +98,8 @@ namespace Yad2RestAPI.Repositories
                 IsFavorite = favorites != null && favorites.Contains(ad.Id),
                 Floor = ad.Floor,
                 TotalArea = ad.TotalArea,
-                Price = ad.Price
+                Price = ad.Price,
+                PropertyType = ad.PropertyType
             }).ToListAsync();
 
             return ads;
