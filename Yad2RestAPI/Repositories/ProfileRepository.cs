@@ -119,7 +119,7 @@ namespace Yad2RestAPI.Repositories
 
         public async Task<bool> AddToFavoritesAsync(int profileId, int adId)
         {
-            var profile = await _context.Profiles.FindAsync(profileId);
+            var profile = await _context.Profiles.Include(p => p.FavoriteAds).FirstOrDefaultAsync(p => p.Id == profileId);
             if (profile == null) return false;
             if (profile.FavoriteAds.Any(ad => ad.Id == adId)) return false;
             var ad = await _context.RealEstateAds.FindAsync(adId);
@@ -131,7 +131,7 @@ namespace Yad2RestAPI.Repositories
 
         public async Task<bool> RemoveFromFavoritesAsync(int profileId, int adId)
         {
-            var profile = await _context.Profiles.FindAsync(profileId);
+            var profile = await _context.Profiles.Include(p => p.FavoriteAds).FirstOrDefaultAsync(p => p.Id == profileId);
             if (profile == null) return false;
             var ad = profile.FavoriteAds.FirstOrDefault(ad => ad.Id == adId);
             if (ad == null) return false;
