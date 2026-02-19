@@ -57,7 +57,7 @@ namespace Yad2RestAPI.Models.RealEstate
         public double TotalArea { get; set; }
         [Range(0, float.MaxValue)]
         public float? Price { get; set; }
-        public string? EntryDate { get; set; }
+        public DateTime? EntryDate { get; set; }
         public bool IsLongTerm { get; set; }
         [Required]
         public string ContactName { get; set; } = string.Empty;

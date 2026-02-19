@@ -23,6 +23,12 @@ namespace Yad2RestAPI.Controllers
             var allAds = await _realEstateRepository.GetAllAdsAsync(userId);
             return Ok(allAds);
         }
+        [HttpGet("search")]
+        public async Task<IActionResult> SearchAds(RealEstateSearchFilters filters, int? userId)
+        {
+            var ads = await _realEstateRepository.SearchAdsAsync(filters, userId);
+            return Ok(ads);
+        }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAdById([FromRoute] int id, [FromQuery] int? userId)
         {
@@ -53,6 +59,16 @@ namespace Yad2RestAPI.Controllers
                 return NotFound();
             }
             return Ok(ad);
+        }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateAd([FromRoute] int id, [FromBody] RealEstatePublishModel data, int? publisherId)
+        {
+            var ad = await _realEstateRepository.UpdateAdAsync(id, data, publisherId);
+            if (ad == null)
+            {
+                return NotFound();
+            }
+            return Ok();
         }
     }
 }

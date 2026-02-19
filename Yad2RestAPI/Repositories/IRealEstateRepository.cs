@@ -9,5 +9,7 @@ namespace Yad2RestAPI.Repositories
         Task<RealEstateAdDetails?> GetAdByIdAsync(int id, int? userId);
         Task CreateAdAsync(RealEstatePublishModel publishModel, int? publisherId);
         Task<RealEstateAdDetails?> DeleteAdAsync(int id);
+        Task<List<RealEstateAdSummary>?> SearchAdsAsync(RealEstateSearchFilters filters, int? userId);
+        Task<RealEstateAdModel?> UpdateAdAsync(int id, RealEstatePublishModel publishModel, int? publisherId);
     }
 }
