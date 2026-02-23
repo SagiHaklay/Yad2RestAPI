@@ -12,5 +12,6 @@
         public float? Price { get; set; }
         public bool IsFavorite { get; set; }
         public string? ImageUrl { get; set; }
+        public float? RoomCount { get; set; }
     }
 }

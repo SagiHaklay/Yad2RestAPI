@@ -99,7 +99,8 @@ namespace Yad2RestAPI.Repositories
                 Floor = ad.Floor,
                 TotalArea = ad.TotalArea,
                 Price = ad.Price,
-                PropertyType = ad.PropertyType
+                PropertyType = ad.PropertyType,
+                RoomCount = ad.RoomCount
             }).ToListAsync();
 
             return ads;
@@ -167,7 +168,8 @@ namespace Yad2RestAPI.Repositories
                 Floor = ad.Floor,
                 TotalArea = ad.TotalArea,
                 Price = ad.Price,
-                PropertyType = ad.PropertyType
+                PropertyType = ad.PropertyType,
+                RoomCount = ad.RoomCount
             }).ToList();
         }
 
@@ -239,7 +241,8 @@ namespace Yad2RestAPI.Repositories
                 OnColumns = model.OnColumns,
                 PropertyStatus = model.PropertyStatus,
                 AirDirectionCount = model.AirDirectionCount,
-                View = model.View,
+                View = model.View & (~RealEstateView.Back),
+                IsBackProperty = model.View.HasFlag(RealEstateView.Back),
                 RoomCount = model.RoomCount,
                 ShowerCount = model.ShowerCount,
                 ParkingCount = model.ParkingCount,

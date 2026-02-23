@@ -48,7 +48,7 @@ namespace Yad2RestAPI.Controllers
                     HouseNumber = ad.HouseNumber,
                     Floor = ad.Floor,
                     PropertyType = ad.PropertyType,
-                    ImageUrl = ad.ImageUrls[0],
+                    ImageUrl = ad.ImageUrls.ElementAtOrDefault(0),
                     Price = ad.Price,
                     TotalArea = ad.TotalArea
                 }).ToList(),
@@ -60,7 +60,7 @@ namespace Yad2RestAPI.Controllers
                     HouseNumber = ad.HouseNumber,
                     Floor = ad.Floor,
                     PropertyType = ad.PropertyType,
-                    ImageUrl = ad.ImageUrls[0],
+                    ImageUrl = ad.ImageUrls.ElementAtOrDefault(0),
                     Price = ad.Price,
                     TotalArea = ad.TotalArea
                 }).ToList()
