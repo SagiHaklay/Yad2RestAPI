@@ -55,6 +55,9 @@ namespace Yad2RestAPI.Models.RealEstate
         public DateTime? EntryDate { get; set; }
         [FromQuery]
         public string? FreeSearchQuery { get; set; }
-
+        [FromQuery]
+        public bool ParkingIncluded { get; set; }
+        [FromQuery]
+        public bool BalconyIncluded { get; set; }
     }
 }

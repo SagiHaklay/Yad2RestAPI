@@ -120,7 +120,8 @@ namespace Yad2RestAPI.Repositories
                 adsQuery = adsQuery.Where(ad => ad.EntryDate <= filters.EntryDate);
             }
             if (filters.PriceIncluded) adsQuery = adsQuery.Where(ad => ad.Price != null);
-            
+            if (filters.ParkingIncluded) adsQuery = adsQuery.Where(ad => ad.ParkingCount > 0);
+            if (filters.BalconyIncluded) adsQuery = adsQuery.Where(ad => ad.BalconyCount > 0);
 
             IEnumerable<RealEstateAdModel> ads = await adsQuery.ToListAsync();
             ads = ads.Where(ad => FilterRange(ad.Price, filters.MinPrice, filters.MaxPrice));
